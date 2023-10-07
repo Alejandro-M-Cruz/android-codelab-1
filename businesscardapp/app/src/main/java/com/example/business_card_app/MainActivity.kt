@@ -63,7 +63,12 @@ fun BusinessCard(
     jobTitle: String,
     contactInformation: ContactInformation
 ) {
-    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier
+            .background(colorResource(R.color.teal_50))
+            .fillMaxSize()
+    ) {
         Presentation(name, jobTitle, modifier = Modifier.weight(1f))
         ContactInformationList(contactInformation)
     }
@@ -85,7 +90,7 @@ fun Presentation(
                 painterResource(R.drawable.android_logo),
                 contentScale = ContentScale.Fit,
                 contentDescription = "Android logo",
-                modifier = Modifier.background(colorResource(R.color.black))
+                modifier = Modifier.background(colorResource(R.color.teal_900))
             )
         }
         Text(
@@ -99,7 +104,7 @@ fun Presentation(
             fontSize = 16.sp,
             lineHeight = 20.sp,
             fontWeight = FontWeight.Bold,
-            color = colorResource(R.color.purple_700)
+            color = colorResource(R.color.teal_700)
         )
     }
 }
@@ -114,20 +119,25 @@ fun ContactInformationList(
             text = contactInformation.email,
             icon = Icons.Rounded.Email,
             iconDescription = "Email",
-            modifier = Modifier.padding(8.dp)
+            modifier = Modifier.padding(16.dp)
         )
         ContactInformationItem(
             text = contactInformation.phone,
             icon = Icons.Rounded.Phone,
             iconDescription = "Phone",
-            modifier = Modifier.padding(start = 8.dp, end = 8.dp)
+            modifier = Modifier
+                .padding(
+                    start = 16.dp,
+                    end = 16.dp,
+                    bottom = contactInformation.website?.let { 0.dp } ?: 16.dp
+                )
         )
         if (contactInformation.website != null) {
             ContactInformationItem(
                 text = contactInformation.website,
                 icon = Icons.Rounded.Search,
                 iconDescription = "Website",
-                modifier = Modifier.padding(8.dp)
+                modifier = Modifier.padding(16.dp, 16.dp, 16.dp, 32.dp)
             )
         }
     }
@@ -147,6 +157,7 @@ fun ContactInformationItem(
     ) {
         Icon(
             icon,
+            tint = colorResource(R.color.teal_700),
             contentDescription = iconDescription,
             modifier = Modifier.padding(end = 16.dp)
         )
