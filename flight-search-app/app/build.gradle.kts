@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.clickbehaviorapp"
-    compileSdk = 34
+    namespace = "com.example.flightsearch"
+    compileSdk = 33
 
     defaultConfig {
-        applicationId = "com.example.clickbehaviorapp"
+        applicationId = "com.example.flightsearch"
         minSdk = 24
         targetSdk = 33
         versionCode = 1
